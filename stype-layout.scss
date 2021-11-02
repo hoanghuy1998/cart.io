@@ -1,0 +1,20 @@
+* {
+    padding: 0px;
+    margin: 0px;
+}
+
+$ogrange_light :#f90;
+$ogrange_dark: #f60;
+$color:#333;
+$bg_white:white;
+$bg-grey:#eee;
+.col-two {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 12px 24px;
+}
+
+.width_80 {
+    width: 80%;
+    margin: 0px auto;
+}

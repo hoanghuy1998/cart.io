@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="stype.css">
+    <title>PAY CART</title>
+</head>
+
+<body class="width_100">
+    <header id="header" class="width_80">
+        <h1>siêu thị trực tuyến</h1>
+    </header>
+    <nav id="nav" class="width_80">
+        <ul class="width_80">
+            <li><a href="https://filelaptrinh.000webhostapp.com/cart/html/index.html">trang chủ</a></li>
+            <li><a href="#" class="loca" onclick="result(this)">giỏ hàng</a></li>
+            <li><a href="https://filelaptrinh.000webhostapp.com/cart/html/pay.html">thanh toán</a></li>
+            <li><a href="">góp ý</a></li>
+            <li><a href="">hỏi đáp</a></li>
+        </ul>
+        <i class="fas fa-bars" onclick="showMenu(this)"></i>
+        <div class="login">
+            <strong>đăng nhập</strong>
+            <i class="fas fa-angle-double-down" onclick="sliderLogin()"></i>
+        </div>
+
+    </nav>
+    <section id="section__main">
+        <div class="section__main ">
+
+            <div class="section__cart2">
+                <section class="section__cart2--infomationCus">
+                    <div>thêm thông tin nhận hàng</div>
+                    <form action="" id="form">
+                        <article>
+                            <span>họ và tên :</span>
+                            <input type="text">
+                        </article>
+                        <article>
+                            <span>địa chỉ :</span>
+                            <input type="text">
+                        </article>
+                        <article>
+                            <span>số điện thoại :</span>
+                            <input type="tel">
+                        </article>
+                        <article>
+                            <span>email :</span>
+                            <input type="email">
+                        </article>
+                    </form>
+                </section>
+                <div class="title">
+                    giỏ hàng
+                </div>
+                <div class="section__cart2--listProduct">
+                    <table>
+                        <tr>
+                            <th>stt</th>
+                            <th>hình ảnh</th>
+                            <th>tên sản phẩm</th>
+                            <th>đơn gía</th>
+                            <th>số lượng</th>
+                            <th>thành tiền</th>
+                            <th></th>
+                        </tr>
+                        <tbody id="show_product"></tbody>
+                        <tr>
+                            <td class="total">tổng đơn hàng</td>
+                            <td class="alltotal">thành tiền</td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="pay"><a href="http://127.0.0.1:5555/html/pay.html" onclick="result(this)">chốt đơn</a></div>
+            </div>
+            <div class="section__main--cart-cate">
+                <article class="cart" id="login">
+                    <strong>tài khoản</strong>
+                    <hr>
+                    <form action="">
+                        <span>tài khoản</span>
+                        <input type="text" placeholder="">
+                        <span>mật khẩu</span>
+                        <input type="password" placeholder="">
+                        <span>
+                            <input type="checkbox" name="" id="remember"><label for="remember">ghi nhớ đăng nhập</label>
+                        </span>
+                        <input type="submit" value="đăng nhập">
+                        <ul>
+                            <li>
+                                <a href="">quên mật khẩu</a>
+                            </li>
+                            <li>
+                                <a href="">đăng ký thành viên</a>
+                            </li>
+                        </ul>
+                    </form>
+                </article>
+                <article class="cate">
+                    <strong>danh mục</strong>
+                    <ul>
+                        <li>
+                            <a href="">đồng hồ</a>
+                        </li>
+                        <li>
+                            <a href="">laptop</a>
+                        </li>
+                        <li>
+                            <a href="">điện thoại</a>
+                        </li>
+                        <li>
+                            <a href="">ba lô</a>
+                        </li>
+                        <li>
+                            <a href="">đồng hồ</a>
+                        </li>
+                        <li>
+                            <a href="">laptop</a>
+                        </li>
+                        <li>
+                            <a href="">điện thoại</a>
+                        </li>
+                        <li>
+                            <a href="">ba lô</a>
+                        </li>
+                    </ul>
+                    <div>
+                        <form action="">
+                            <input type="search" name="" id="">
+                        </form>
+                    </div>
+                </article>
+            </div>
+        </div>
+
+    </section>
+    <script src="main.js"></script>
+    <script>
+        showCart_pagePay()
+    </script>
+</body>
+
+</html>

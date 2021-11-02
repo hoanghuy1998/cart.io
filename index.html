@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" />
+
+    <link rel="stylesheet" href="stype.css">
+    <title> CART SHOPPING</title>
+</head>
+
+<body class="width_100">
+    <header id="header" class="width_80">
+        <h1>siêu thị trực tuyến</h1>
+    </header>
+    <nav id="nav" class="width_80">
+        <ul class="width_80">
+            <li><a href="#" class="loca">trang chủ</a></li>
+            <li><a href="https://filelaptrinh.000webhostapp.com/cart/html/pay_cart.html">giỏ hàng</a></li>
+            <li><a href="https://filelaptrinh.000webhostapp.com/cart/html/pay.html">thanh toán</a></li>
+            <li><a href="">góp ý</a></li>
+            <li><a href="">hỏi đáp</a></li>
+        </ul>
+        <i class="fas fa-bars" onclick="showMenu(this)"></i>
+        <div class="login">
+            <strong>đăng nhập</strong>
+            <i class="fas fa-angle-double-down" onclick="sliderLogin()"></i>
+        </div>
+    </nav>
+    <section id="section__main">
+        <div class="section__main ">
+            <div class="section__main--product ">
+                <section class="banner">
+                    <img src="banner.jpg" alt="">
+                </section>
+                <section class="list-product  ">
+                    <article class="product1 product">
+                        <div class="img">
+                            <img src="1.jpg" alt="">
+                        </div>
+                        <div class="des">
+                            <span>
+                                <p>
+                                    <span>$ </span>
+                            <span>10</span>
+                            </p>
+                            <p>đồng hồ</p>
+                            </span>
+                            <article>
+                                <p>1</p>
+                                <div class="add">
+                                    <i onclick="addQuantityUp(this)" class="fas fa-caret-up"></i>
+                                    <i onclick="addQuantityDown(this)" class="fas fa-caret-down"></i>
+                                </div>
+                            </article>
+                            <button onclick="addToCart(this)" class="addproduct">đặt hàng</button>
+                        </div>
+                    </article>
+                    <article class="product1 product">
+                        <div class="img">
+                            <img src="2.gif" alt="">
+                        </div>
+                        <div class="des">
+                            <span>
+                                <p>
+                                    <span>$ </span>
+                            <span>20</span>
+                            </p>
+                            <p>laptop</p>
+                            </span>
+                            <article>
+                                <p>1</p>
+                                <div class="add">
+                                    <i onclick="addQuantityUp(this)" class="fas fa-caret-up"></i>
+                                    <i onclick="addQuantityDown(this)" class="fas fa-caret-down"></i>
+                                </div>
+                            </article>
+                            <button onclick="addToCart(this)" class="addproduct">đặt hàng</button>
+                        </div>
+                    </article>
+                    <article class="product1 product">
+                        <div class="img">
+                            <img src="3.jpg" alt="">
+                        </div>
+                        <div class="des">
+                            <span>
+                                <p>
+                                    <span>$ </span>
+                            <span>30</span>
+                            </p>
+                            <p>đồng hồ trắng</p>
+                            </span>
+                            <article>
+                                <p>1</p>
+                                <div class="add">
+                                    <i onclick="addQuantityUp(this)" class="fas fa-caret-up"></i>
+                                    <i onclick="addQuantityDown(this)" class="fas fa-caret-down"></i>
+                                </div>
+                            </article>
+                            <button onclick="addToCart(this)" class="addproduct">đặt hàng</button>
+                        </div>
+                    </article>
+                    <article class="product1 product">
+                        <div class="img">
+                            <img src="4.jpg" alt="">
+                        </div>
+                        <div class="des">
+                            <span>
+                                <p>
+                                    <span>$ </span>
+                            <span>40</span>
+                            </p>
+                            <p>đồng hồ đen</p>
+                            </span>
+                            <article>
+                                <p>1</p>
+                                <div class="add">
+                                    <i onclick="addQuantityUp(this)" class="fas fa-caret-up"></i>
+                                    <i onclick="addQuantityDown(this)" class="fas fa-caret-down"></i>
+                                </div>
+                            </article>
+                            <button onclick="addToCart(this)" class="addproduct">đặt hàng</button>
+                        </div>
+                    </article>
+                    <article class="product1 product">
+                        <div class="img">
+                            <img src="5.jpg" alt="">
+                        </div>
+                        <div class="des">
+                            <span>
+                                <p>
+                                    <span>$ </span>
+                            <span>50</span>
+                            </p>
+                            <p>nón</p>
+                            </span>
+                            <article>
+                                <p>1</p>
+                                <div class="add">
+                                    <i onclick="addQuantityUp(this)" class="fas fa-caret-up"></i>
+                                    <i onclick="addQuantityDown(this)" class="fas fa-caret-down"></i>
+                                </div>
+                            </article>
+                            <button onclick="addToCart(this)" class="addproduct">đặt hàng</button>
+                        </div>
+                    </article>
+                    <article class="product1 product">
+                        <div class="img">
+                            <img src="6.jpg" alt="">
+                        </div>
+                        <div class="des">
+                            <span>
+                                <p>
+                                    <span>$ </span>
+                            <span>60</span>
+                            </p>
+                            <p>vali</p>
+                            </span>
+                            <article>
+                                <p>1</p>
+                                <div class="add">
+                                    <i onclick="addQuantityUp(this)" class="fas fa-caret-up"></i>
+                                    <i onclick="addQuantityDown(this)" class="fas fa-caret-down"></i>
+                                </div>
+                            </article>
+                            <button onclick="addToCart(this)" class="addproduct">đặt hàng</button>
+                        </div>
+                    </article>
+                    <article class="product1 product">
+                        <div class="img">
+                            <img src="7.jpg" alt="">
+                        </div>
+                        <div class="des">
+                            <span>
+                                <p>
+                                    <span>$ </span>
+                            <span>70</span>
+                            </p>
+                            <p>điện thoại</p>
+                            </span>
+                            <article>
+                                <p>1</p>
+                                <div class="add">
+                                    <i onclick="addQuantityUp(this)" class="fas fa-caret-up"></i>
+                                    <i onclick="addQuantityDown(this)" class="fas fa-caret-down"></i>
+                                </div>
+                            </article>
+                            <button onclick="addToCart(this)" class="addproduct">đặt hàng</button>
+                        </div>
+                    </article>
+                    <article class="product1 product">
+                        <div class="img">
+                            <img src="8.jpg" alt="">
+                        </div>
+                        <div class="des">
+                            <span>
+                                <p>
+                                    <span>$ </span>
+                            <span>80</span>
+                            </p>
+                            <p>điện thoại cam</p>
+                            </span>
+                            <article>
+                                <p>1</p>
+                                <div class="add">
+                                    <i onclick="addQuantityUp(this)" class="fas fa-caret-up"></i>
+                                    <i onclick="addQuantityDown(this)" class="fas fa-caret-down"></i>
+                                </div>
+                            </article>
+                            <button onclick="addToCart(this)" class="addproduct">đặt hàng</button>
+                        </div>
+                    </article>
+                    <article class="product1 product">
+                        <div class="img">
+                            <img src="9.jpg" alt="">
+                        </div>
+                        <div class="des">
+                            <span>
+                                <p>
+                                    <span>$ </span>
+                            <span>90</span>
+                            </p>
+                            <p>đồng hồ trắng</p>
+                            </span>
+                            <article>
+                                <p>1</p>
+                                <div class="add">
+                                    <i onclick="addQuantityUp(this)" class="fas fa-caret-up"></i>
+                                    <i onclick="addQuantityDown(this)" class="fas fa-caret-down"></i>
+                                </div>
+                            </article>
+                            <button onclick="addToCart(this)" class="addproduct">đặt hàng</button>
+                        </div>
+                    </article>
+                </section>
+            </div>
+            <div class="section__main--cart-cate">
+                <article class="cart" id="login">
+                    <strong>tài khoản</strong>
+                    <hr>
+                    <form action="">
+                        <span>tài khoản</span>
+                        <input type="text" placeholder="">
+                        <span>mật khẩu</span>
+                        <input type="password" placeholder="">
+                        <article>
+                            <input type="checkbox" name="" id="remember"><label for="remember">ghi nhớ đăng nhập</label>
+                        </article>
+                        <input type="submit" value="đăng nhập">
+                        <ul>
+                            <li>
+                                <a href="">quên mật khẩu</a>
+                            </li>
+                            <li>
+                                <a href="">đăng ký thành viên</a>
+                            </li>
+                        </ul>
+
+
+                    </form>
+                </article>
+                <article class="cate">
+                    <strong>danh mục</strong>
+                    <ul>
+                        <li>
+                            <a href="">đồng hồ</a>
+                        </li>
+                        <li>
+                            <a href="">laptop</a>
+                        </li>
+                        <li>
+                            <a href="">điện thoại</a>
+                        </li>
+                        <li>
+                            <a href="">ba lô</a>
+                        </li>
+                        <li>
+                            <a href="">đồng hồ</a>
+                        </li>
+                        <li>
+                            <a href="">laptop</a>
+                        </li>
+                        <li>
+                            <a href="">điện thoại</a>
+                        </li>
+                        <li>
+                            <a href="">ba lô</a>
+                        </li>
+                    </ul>
+                    <div>
+                        <form action="">
+                            <input type="search" name="" id="">
+                        </form>
+                    </div>
+                </article>
+            </div>
+        </div>
+        <div class="section__cart">
+            <div class="cart">
+                <img class="click-cart" onclick="showCart(this)" src="cart.png" alt="">
+                <span id="quantity">0</span>
+            </div>
+            <div class="list-product">
+                <div class="info-product">
+                    <table>
+                        <tr>
+                            <th>stt</th>
+                            <th>hình ảnh</th>
+                            <th>tên sản phẩm</th>
+                            <th>đơn gía</th>
+                            <th>số lượng</th>
+                            <th>thành tiền</th>
+                            <th>
+                                <i class="fas fa-times" onclick="hidenlist(this)"></i>
+                            </th>
+                        </tr>
+                        <tbody id="show_product"></tbody>
+                        <tr>
+                            <td class="total">tổng đơn hàng</td>
+                            <td class="alltotal">thành tiền</td>
+                            <th class="deleteAll" onclick="deleteAll(this)">
+                                <a>xóa tất cả</a>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th class="pay"><a href="http://127.0.0.1:5555/html/pay_cart.html">thanh toán</a></th>
+
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="main.js"></script>
+    <script>
+    </script>
+</body>
+
+</html>
