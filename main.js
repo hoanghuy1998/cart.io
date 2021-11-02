@@ -172,6 +172,7 @@ function showCart_pagePay() {
 function result() {
     var form = document.querySelector('form')
     if (form) {
+        console.log(form.children[0].children[1].value)
         var nameCus = form.children[0].children[1].value
         var dressCus = form.children[1].children[1].value
         var phoneCus = form.children[2].children[1].value
