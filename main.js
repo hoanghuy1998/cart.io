@@ -187,9 +187,10 @@ function result(x) {
 function cus(params) {
     var info = ""
     var infoCus = JSON.parse(sessionStorage.getItem("infoCus"))
-    var [a, b, c, d] = infoCus
-    console.log(infoCus)
-    info += `
+    if (infoCus) {
+        var [a, b, c, d] = infoCus
+        console.log(infoCus)
+        info += `
             <article>
                 <span>họ và tên :</span>
                 <p>${a}</p>
@@ -206,11 +207,13 @@ function cus(params) {
                 <span>email :</span>
                 <p>${d}</p>
             </article>
-`
-    var cus = document.getElementById('cus')
-    console.log(cus)
+        `
+        var cus = document.getElementById('cus')
+        console.log(cus)
 
-    cus.innerHTML = info
+        cus.innerHTML = info
+
+    }
 
 
 }
@@ -278,9 +281,6 @@ window.addEventListener('resize', function() {
 
 
 
-var array = ['javascript', 'ruby', 'php']
-var array2 = ['javascript', 'ruby', 'php']
-console.log(...array, ...array2);
 
 
 
