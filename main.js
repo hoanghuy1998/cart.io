@@ -145,29 +145,31 @@ function showCart_pagePay() {
 
     if (show_product) {
 
-        for (var i = 0; i < allInfoProduct.length; i++) {
-            var [img, name, price, quantity, money] = allInfoProduct[i]
-            allMoney += allInfoProduct[i][4]
-            var child = document.createElement('tr')
-            if (child) {
-                child.innerHTML = `
-                    <td><span>${i+1}</span></td>
-                    <td><img src="${img}" alt=""></td>
-                    <td class="nameProduct"><span>${name}</span></td>
-                    <td><span>${price}</span></td>
-                    <td><span>${quantity}</span></td>
-                    <td><span> ${money}</span></td>
-                    `
-            }
-            show_product.appendChild(child)
+        if (allInfoProduct) {
+            for (var i = 0; i < allInfoProduct.length; i++) {
+                var [img, name, price, quantity, money] = allInfoProduct[i]
+                allMoney += allInfoProduct[i][4]
+                var child = document.createElement('tr')
+                if (child) {
+                    child.innerHTML = `
+                        <td><span>${i+1}</span></td>
+                        <td><img src="${img}" alt=""></td>
+                        <td class="nameProduct"><span>${name}</span></td>
+                        <td><span>${price}</span></td>
+                        <td><span>${quantity}</span></td>
+                        <td><span> ${money}</span></td>
+                        `
+                }
+                show_product.appendChild(child)
 
+            }
         }
 
     }
     totalMoney()
 }
 
-function result(x) {
+function result() {
     var form = document.getElementById('form')
     if (form) {
         var nameCus = form.children[0].children[1].value
@@ -187,7 +189,7 @@ function result(x) {
 
 }
 
-function cus(params) {
+function cus() {
     var info = ""
     var infoCus = JSON.parse(sessionStorage.getItem("infoCus"))
     if (infoCus) {
