@@ -139,9 +139,12 @@ function totalMoney() {
 }
 
 function showCart_pagePay() {
+
     var allInfoProduct = JSON.parse(sessionStorage.getItem("allInfoProduct"))
     var show_product = document.getElementById('show_product')
+
     if (show_product) {
+
         for (var i = 0; i < allInfoProduct.length; i++) {
             var [img, name, price, quantity, money] = allInfoProduct[i]
             allMoney += allInfoProduct[i][4]
