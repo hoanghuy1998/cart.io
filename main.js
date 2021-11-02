@@ -170,7 +170,7 @@ function showCart_pagePay() {
 }
 
 function result() {
-    var form = document.getElementById('form')
+    var form = document.querySelector('form')
     if (form) {
         var nameCus = form.children[0].children[1].value
         var dressCus = form.children[1].children[1].value
