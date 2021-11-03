@@ -295,7 +295,7 @@ function showMenu() {
 
 
 function sliderLogin() {
-    console.log('x')
+
     login.classList.toggle('sliderPopSingle')
     nav.classList.remove('sliderMenu')
     list_product.classList.remove('display_block')
@@ -308,14 +308,13 @@ window.addEventListener('resize', function() {
             nav.children[0].style.animation = 'none'
         }
         if (login) {
-            login.style.animation = 'none'
+            // login.style.animation = 'none'
 
         }
 
 
     } else {
-        slider = 1
-        slider2 = 2
+        login.classList.remove('sliderPopSingle')
     }
 })
 

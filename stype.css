@@ -41,7 +41,7 @@ html {
   top: 4rem !important; }
 
 .changeLogin {
-  position: fixed;
+  position: unset;
   right: 1rem;
   top: 4rem; }
 
@@ -562,6 +562,9 @@ html {
           grid-column: 8/10 !important; }
 
 @media only screen and (max-width: 799px) {
+  .changeLogin {
+    position: fixed; }
+
   .changeSpan {
     width: 100% !important; }
 
