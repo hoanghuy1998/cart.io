@@ -122,7 +122,12 @@ html {
     .product .des span p {
       padding: 0px .25rem; }
       .product .des span p:last-child {
-        margin-top: .5rem; }
+        margin-top: .5rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        display: -webkit-box; }
         .product .des span p:last-child:hover {
           font-weight: 900; }
     .product .des article {
