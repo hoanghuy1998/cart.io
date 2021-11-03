@@ -1,9 +1,5 @@
-if (document.querySelector('.info-product')) {
-
-    document.querySelector('.info-product').style.display = 'none'
-}
-
 function addQuantityUp(x) {
+
     x.parentElement.parentElement.children[0].innerText++
 }
 
@@ -17,24 +13,29 @@ function addQuantityDown(x) {
 function hidenlist(x) {
     document.querySelector('.info-product').style.display = 'none'
 }
+const list_product = document.querySelector('.section__cart .list-product')
 
-function showCart(x) {
+function showCart() {
+    list_product.classList.toggle('display_block')
+    login.classList.remove('sliderPopSingle')
+    nav.classList.remove('sliderMenu')
+
+    // if (document.querySelector('.info-product').style.display == 'none') {
+    //     document.querySelector('.info-product').style.display = 'block'
 
 
-    if (document.querySelector('.info-product').style.display == 'none') {
-        document.querySelector('.info-product').style.display = 'block'
+    // } else {
+    //     document.querySelector('.info-product').style.display = 'none'
 
-
-    } else {
-        document.querySelector('.info-product').style.display = 'none'
-
-    }
+    // }
 }
 
 
 
 var allInfoProduct = new Array()
 var allMoney = 0
+const span_quantity = document.querySelector('.section__cart .cart span')
+console.log(span_quantity)
 
 function addToCart(x) {
     var test = true
@@ -70,6 +71,10 @@ function addToCart(x) {
 
 function addQuantity() {
     document.getElementById('quantity').innerText = allInfoProduct.length
+    span_quantity.classList.add('changeSpan')
+    setTimeout(() => {
+        span_quantity.classList.remove('changeSpan')
+    }, 200)
 }
 
 function showToCart() {
@@ -139,48 +144,95 @@ function totalMoney() {
 }
 
 function showCart_pagePay() {
-
     var allInfoProduct = JSON.parse(sessionStorage.getItem("allInfoProduct"))
     var show_product = document.getElementById('show_product')
-
     if (show_product) {
-
-        if (allInfoProduct) {
-            for (var i = 0; i < allInfoProduct.length; i++) {
-                var [img, name, price, quantity, money] = allInfoProduct[i]
-                allMoney += allInfoProduct[i][4]
-                var child = document.createElement('tr')
-                if (child) {
-                    child.innerHTML = `
-                        <td><span>${i+1}</span></td>
-                        <td><img src="${img}" alt=""></td>
-                        <td class="nameProduct"><span>${name}</span></td>
-                        <td><span>${price}</span></td>
-                        <td><span>${quantity}</span></td>
-                        <td><span> ${money}</span></td>
-                        `
-                }
-                show_product.appendChild(child)
-
+        for (var i = 0; i < allInfoProduct.length; i++) {
+            var [img, name, price, quantity, money] = allInfoProduct[i]
+            allMoney += allInfoProduct[i][4]
+            var child = document.createElement('tr')
+            if (child) {
+                child.innerHTML = `
+                    <td><span>${i+1}</span></td>
+                    <td><img src="${img}" alt=""></td>
+                    <td class="nameProduct"><span>${name}</span></td>
+                    <td><span>${price}</span></td>
+                    <td><input type="number" id="handleQuantity" onchange="handleQuantity(this)" value=${quantity}></td>
+                    <td><span> ${money}</span></td>
+                    `
             }
+            show_product.appendChild(child)
+
         }
 
     }
     totalMoney()
 }
 
-function result() {
-    var form = document.querySelector('form')
-    if (form) {
-        console.log(form.children[0].children[1].value)
-        var nameCus = form.children[0].children[1].value
-        var dressCus = form.children[1].children[1].value
-        var phoneCus = form.children[2].children[1].value
-        var emailCus = form.children[3].children[1].value
-        var infoCus = new Array(nameCus, dressCus, phoneCus, emailCus)
-        sessionStorage.setItem("infoCus", JSON.stringify(infoCus))
-        console.log(infoCus)
+function showCart_pagePay_nochange() {
+    var allInfoProduct = JSON.parse(sessionStorage.getItem("allInfoProduct"))
+    var show_product = document.getElementById('show_product')
+    if (show_product) {
+        for (var i = 0; i < allInfoProduct.length; i++) {
+            var [img, name, price, quantity, money] = allInfoProduct[i]
+            allMoney += allInfoProduct[i][4]
+            var child = document.createElement('tr')
+            if (child) {
+                child.innerHTML = `
+                    <td><span>${i+1}</span></td>
+                    <td><img src="${img}" alt=""></td>
+                    <td class="nameProduct"><span>${name}</span></td>
+                    <td><span>${price}</span></td>
+                    <td><span>${quantity}</span></td>
+                    <td><span> ${money}</span></td>
+                    `
+            }
+            show_product.appendChild(child)
 
+        }
+
+    }
+    totalMoney()
+}
+const handleQuantity = (x) => {
+    var allInfoProduct = JSON.parse(sessionStorage.getItem("allInfoProduct"))
+        // console.log(x.parentElement.parentElement.children[2].children[0].innerText)
+    const nameChange = x.parentElement.parentElement.children[2].children[0].innerText
+
+    if (allInfoProduct) {
+        let total = 0
+        for (let i = 0; i < allInfoProduct.length; i++) {
+            var [img, name, price, quantity, money] = allInfoProduct[i]
+            if (nameChange === name) {
+                if (x.value <= 1) {
+                    console.log('am')
+                    x.value = 1
+                }
+                allInfoProduct[i][3] = x.value
+                allInfoProduct[i][4] = allInfoProduct[i][2] * allInfoProduct[i][3]
+                x.parentElement.nextElementSibling.children[0].innerText = allInfoProduct[i][4]
+            }
+        }
+        sessionStorage.setItem('allInfoProduct', JSON.stringify(allInfoProduct))
+        for (let i = 0; i < allInfoProduct.length; i++) {
+            total += allInfoProduct[i][4]
+
+        }
+        document.querySelector('.alltotal').innerText = total
+    }
+}
+const allCus = []
+
+function result(x) {
+    var form = document.getElementById('form')
+    if (form) {
+        var nameCus = form.children[0].children[1].value
+        var emailCus = form.children[1].children[1].value
+        var phoneCus = form.children[2].children[1].value
+        var dressCus = form.children[3].children[1].value
+        const country = form.children[4].children[1].value
+        var infoCus = new Array(nameCus, emailCus, phoneCus, dressCus, country)
+        sessionStorage.setItem("infoCus", JSON.stringify(infoCus))
 
     }
 
@@ -190,82 +242,64 @@ function result() {
 
 }
 
-function cus() {
+function cus(params) {
     var info = ""
     var infoCus = JSON.parse(sessionStorage.getItem("infoCus"))
-    if (infoCus) {
-        var [a, b, c, d] = infoCus
-        console.log(infoCus)
-        info += `
+    if (allCus) {
+        for (let i = 0; i < allCus.length; i++) {
+            const [a, b, c, d, e] = allCus[i]
+            if (infoCus[0] === a && infoCus[1] === b && infoCus[2] === c && infoCus[3] === d && infoCus[4] === e) {
+
+            } else {
+                allCus.push(infoCus)
+                localStorage.setItem("infoCus", JSON.stringify(infoCus))
+            }
+        }
+    }
+    var [a, b, c, d, e] = infoCus
+    console.log(infoCus)
+    info += `
             <article>
-                <span>họ và tên :</span>
+                <strong>Họ Và Tên :</strong>
                 <p>${a}</p>
             </article>
             <article>
-                <span>địa chỉ :</span>
+                <strong>Email :</strong>
                 <p>${b}</p>
             </article>
             <article>
-                <span>số điện thoại :</span>
+                <strong>Số Điện Thoại :</strong>
                 <p>${c}</p>
             </article>
             <article>
-                <span>email :</span>
+                <strong>Địa Chỉ :</strong>
                 <p>${d}</p>
             </article>
-        `
-        var cus = document.getElementById('cus')
-        console.log(cus)
-
-        cus.innerHTML = info
-
-    }
-
-
+            <article>
+                <strong>Thành Phố :</strong>
+                <p>${e}</p>
+        </article>
+     `
+    var cus = document.getElementById('cus')
+    cus.innerHTML = info
 }
+const login = document.getElementById('login')
+const nav = document.querySelector('#nav ul')
 
-var slider = 1
 
-function showMenu(x) {
-    slider++
-    if (slider > 2) {
-        slider = 1
-    }
-    switch (slider) {
-        case 1:
-            x.parentElement.children[0].style.animation = 'ease sliderOut 1s forwards'
-            break;
-
-        default:
-            x.parentElement.children[0].style.animation = 'ease sliderOn 1s forwards'
-            break;
-    }
+function showMenu() {
+    nav.classList.toggle('sliderMenu')
+    login.classList.remove('sliderPopSingle')
+    list_product.classList.remove('display_block')
 }
 
 
-var slider2 = 2
+function sliderLogin() {
+    console.log('x')
+    login.classList.toggle('sliderPopSingle')
+    nav.classList.remove('sliderMenu')
+    list_product.classList.remove('display_block')
 
-var login = document.querySelector('#login')
-
-function sliderLogin(params) {
-    console.log(login)
-    if (login) {
-        slider2++
-        if (slider2 > 2) {
-            slider2 = 1
-        }
-        switch (slider2) {
-            case 1:
-                login.style.animation = 'ease sliderToCenter 1s forwards'
-                break;
-
-            default:
-                login.style.animation = 'ease sliderToTop 1s forwards'
-                break;
-        }
-
-
-    }
 }
 window.addEventListener('resize', function() {
     if (this.window.innerWidth > 799) {
@@ -286,136 +320,18 @@ window.addEventListener('resize', function() {
 })
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// var click_cart = document.querySelector('.click-cart')
-// var show_cart = click_cart.parentElement.parentElement.children[1].children[0]
-// show_cart.style.display = 'none'
-//     // bật tắc giỏ hàng
-// if (click_cart) {
-//     click_cart.addEventListener('click', function() {
-//         if (show_cart.style.display == 'none') {
-//             show_cart.style.display = 'block'
-
-
-//         } else {
-//             show_cart.style.display = 'none'
-//         }
-//     })
-// }
-
-// //thêm lượng sản phẩm
-// var add = document.querySelectorAll('.add')
-// if (add) {
-//     for (let i = 0; i < add.length; i++) {
-//         add[i].children[0].addEventListener('click', function() {
-//             add[i].parentElement.children[0].innerText++
-//         })
-//         add[i].children[1].addEventListener('click', function() {
-//             if (add[i].parentElement.children[0].innerText == 1) {
-//                 add[i].parentElement.children[0].innerText = 2
-//             }
-//             add[i].parentElement.children[0].innerText--
-//         })
-
-//     }
-
-// }
-
-
-
-
-// //thêm số lượng  sản phẩm
-// var addProduct = document.querySelectorAll('.addproduct')
-
-// var allInfoProduct = new Array()
-// var allMoney = 0
-
-// if (addProduct) {
-//     for (let i = 0; i < addProduct.length; i++) {
-//         addProduct[i].addEventListener('click', function() {
-//             var test = true
-//             var imgProduct = addProduct[i].parentElement.parentElement.children[0].src
-//             var nameProduct = addProduct[i].parentElement.children[0].children[1].innerText
-//             var priceProduct = parseInt(addProduct[i].parentElement.children[0].children[0].children[1].innerText)
-//             var quantityProduct = parseInt(addProduct[i].parentElement.children[1].children[0].innerText)
-//             var moneyProduct = priceProduct * quantityProduct
-//             var infoProduct = new Array(imgProduct, nameProduct, priceProduct, quantityProduct, moneyProduct)
-
-//             // for (var j = 0; j < allInfoProduct.length; j++) {
-//             //     if (allInfoProduct[j][1] == nameProduct) {
-//             //         console.log('trùng')
-//             //         test = false
-//             //         quantity += allInfoProduct[j][3]
-//             //         allInfoProduct[j][3] = quantity
-//             //         break
-//             //     }
-
-//             // }
-//             // if (test) {
-//             //     allInfoProduct.push()
-//             //     count++
-//             // }
-//             allInfoProduct.push(infoProduct)
-//             addProductToCart(imgProduct, nameProduct, priceProduct, quantityProduct, moneyProduct)
-//             allMoney += moneyProduct
-//             var alltotal = document.querySelector('.alltotal')
-//             if (alltotal) {
-//                 alltotal.innerText = allMoney
-//             }
-
-
-//             click_cart.parentElement.children[1].innerText = allInfoProduct.length
-//         })
-
-//     }
-// }
-
-
-// function addProductToCart(imgProduct, nameProduct, priceProduct, quantityProduct, moneyProduct) {
-//     var show_product = document.getElementById('show_product')
-//     if (show_product) {
-//         var child = document.createElement('tr')
-//         console.log(allInfoProduct)
-//         for (let i = 0; i < allInfoProduct.length; i++) {
-//             if (child) {
-//                 child.innerHTML = `
-//                     <td><span>${i+1}</span></td>
-//                     <td><img src="${imgProduct}" alt=""></td>
-//                     <td><span>${nameProduct}</span></td>
-//                     <td><span>${priceProduct}</span></td>
-//                     <td><span>${quantityProduct}</span></td>
-//                     <td><span>${moneyProduct}</span></td>
-//                     `
-//             }
-//         }
-//         show_product.appendChild(child)
-//     }
-// }
+//scroll window
+window.addEventListener('scroll', () => {
+    y = window.scrollY
+    if (y > 0) {
+        document.getElementById('nav').classList.add('navFixed')
+        nav.classList.add('changeMenu')
+        login.classList.add('changeLogin')
+        document.querySelector('.login').classList.add('changeTextLogin')
+    } else {
+        document.getElementById('nav').classList.remove('navFixed')
+        nav.classList.remove('changeMenu')
+        login.classList.remove('changeLogin')
+        document.querySelector('.login').classList.remove('changeTextLogin')
+    }
+})
