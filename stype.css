@@ -740,6 +740,9 @@ html {
         background-color: white; }
     #section__main .section__cart2--listProduct {
       background-color: white; } }
+@media screen and (max-width: 385px) {
+  #nav .login {
+    top: 7rem; } }
 @keyframes sliderOn {
   form {
     opacity: 0;

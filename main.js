@@ -11,7 +11,7 @@ function addQuantityDown(x) {
 }
 
 function hidenlist(x) {
-    document.querySelector('.info-product').style.display = 'none'
+    document.querySelector('.section__cart .list-product').classList.remove('display_block')
 }
 const list_product = document.querySelector('.section__cart .list-product')
 
