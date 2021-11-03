@@ -302,18 +302,7 @@ function sliderLogin() {
 
 }
 window.addEventListener('resize', function() {
-    if (this.window.innerWidth > 799) {
-        var nav = this.document.getElementById('nav')
-        if (nav) {
-            nav.children[0].style.animation = 'none'
-        }
-        if (login) {
-            // login.style.animation = 'none'
-
-        }
-
-
-    } else {
+    if (this.window.innerWidth < 799) {
         login.classList.remove('sliderPopSingle')
     }
 })
