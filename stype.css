@@ -227,7 +227,8 @@ html {
     transition: all .3s; }
     #nav .login strong {
       align-self: center;
-      justify-self: center; }
+      justify-self: center;
+      text-transform: capitalize; }
     #nav .login i {
       justify-self: center;
       align-self: center;
